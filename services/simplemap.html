@@ -25,11 +25,15 @@
       let map;
 
       function initMap() {
+        async const {Map} await google.maps.import library("maps");
+        
         map = new google.maps.Map(document.getElementById("map"), {
           center: { lat: -34.397, lng: 150.644 },
           zoom: 8,
         });
       }
+
+      
     </script>
   </head>
   <body>
