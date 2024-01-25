@@ -2,7 +2,7 @@
   <head>
     <title>An Oil Tale</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <!-- playground-hide [Gotten from googlr]-->
+    <!-- playground-hide [Gotten from google]-->
     <script>
       const process = { env: {} };
       process.env.GOOGLE_MAPS_API_KEY =
@@ -72,6 +72,9 @@ function initMap(){
 // --------------------------Map creation ends-----------------------------
 //------------------Creating markers with clickable info windows for each position on the map----------------------------------
 // Code gotten and modified from: https://github.com/googlemaps/js-samples/tree/main/samples/infowindow-simple
+//I tried to create a state list and use the for.each JS code function to create markers for each state in the list, but I could not get that to work
+//Hence the repeat of new markers and info.window codes. I'd appreciate it if you could give some insight on how to make it efficient and function without having to 
+// create multiple markers. Thank you.
 //First Marker:
     const content = 
     "Akwa Ibom State, situated in the southern part of Nigeria, proudly holds the title of the leading producer of crude oil in the country. With a commanding 31.4% share, Akwa Ibom contributes significantly to Nigeria's energy landscape, producing an impressive 504,000 barrels per day. Its strategic location and robust infrastructure make it a key player in the nation's oil sector, supporting economic growth and development.";
