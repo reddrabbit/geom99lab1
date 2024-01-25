@@ -1,0 +1,244 @@
+<html>
+  <head>
+    <title>An Oil Tale</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!-- playground-hide [Gotten from googlr]-->
+    <script>
+      const process = { env: {} };
+      process.env.GOOGLE_MAPS_API_KEY =
+        "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg";
+    </script>
+
+    <style>
+
+    #map {
+        height: 100%;
+        border: solid 4px rgb(61, 61, 61);
+    }
+
+    html,body{
+        height: 100%;
+        margin: auto;
+        padding: 0;
+        background-color: rgb(255, 218, 170);
+    }
+    h1{
+      margin-top: 2%;
+      text-align: center;
+      color: rgb(66, 57, 57);
+    }
+
+    p{
+      text-align: left;
+      padding: 5px;
+      margin: 5px;
+    }
+
+    #text{
+      width: 80%;
+      margin: auto;
+    }
+
+
+    </style>
+
+    <script>
+//Template used: circle-simple. Github: https://github.com/googlemaps/js-samples/tree/main/samples/circle-simple
+//Code inspo for disabling default zoom button UI: https://developers.google.com/maps/documentation/javascript/controls#Adding_Controls_to_the_Map
+//Code inspo for making map GREEDY: 
+// This example creates circles on the map, representing Oil producing states in Nigeria
+//and how much oil they produce. The circles grow with respect to the number of barrels produced
+// First, create an object containing LatLng and population for each state.
+
+//I've tweaked the location to reflect some states in Nigeria where oil is being produced
+//I switched out the initial population variable with the barrel
+
+
+//Changed the map center and zoom level
+//Changed the mapTypeId 
+//Changed zoom option to Greedy
+//Turned off zoom control since map is GREEDY
+function initMap(){
+  // Create the map.
+  const map = new google.maps.Map(
+    document.getElementById("map") ,
+    {
+      zoom: 7,
+      center: {lat: 7.115034161776163, lng:6.742778518724801},
+      gestureHandling: "greedy",
+      zoomControl: false,
+    });
+// --------------------------Map creation ends-----------------------------
+//------------------Creating markers with clickable info windows for each position on the map----------------------------------
+// Code gotten and modified from: https://github.com/googlemaps/js-samples/tree/main/samples/infowindow-simple
+//First Marker:
+    const content = 
+    "Akwa Ibom State, situated in the southern part of Nigeria, proudly holds the title of the leading producer of crude oil in the country. With a commanding 31.4% share, Akwa Ibom contributes significantly to Nigeria's energy landscape, producing an impressive 504,000 barrels per day. Its strategic location and robust infrastructure make it a key player in the nation's oil sector, supporting economic growth and development.";
+    const infoWindow = new google.maps.InfoWindow({
+      content: content,
+      maxWidth:200,
+      ariaLabel: "Akwa Ibom"
+    }); 
+
+    const marker = new google.maps.Marker({
+      position: { lat: 5.041237307004679, lng: 7.919874406412119 },
+      map,
+      title: "Click for more",
+    });
+
+    marker.addListener("click", () =>{
+      infoWindow.open({
+        anchor:marker,
+        map,
+      });
+    });
+//Second Marker:
+    const content1 = 
+    "Delta State, though not traditionally associated with crude oil production, has emerged as a formidable hub in Nigeria's energy portfolio. Accounting for 21.56% of the total production, Delta contributes 346,000 barrels per day, showcasing its importance in the country's oil industry. The state's diverse economic activities and strategic location have positioned it as a crucial player in the energy sector, driving economic prosperity and development.";
+    const infoWindow1 = new google.maps.InfoWindow({
+      content: content1,
+      maxWidth: 200,
+      ariaLabel: "Delta State"
+    }); 
+
+    const marker1 = new google.maps.Marker({
+      position: { lat: 5.567537217474196, lng: 5.765723880787949 },
+      map,
+      title: "Click for more",
+    });
+
+    marker1.addListener("click", () =>{
+      infoWindow1.open({
+        anchor:marker1,
+        map,
+      });
+    });
+//Third Marker:
+const content2 = 
+    "Rivers State, a major player in the oil and gas industry, stands at the forefront of Nigeria's energy production. With a 21.43% share and a daily output of 344,000 barrels, Rivers State plays a pivotal role in meeting the nation's energy demands. The state's robust infrastructure, including key ports and refineries, further solidifies its status as a critical player in Nigeria's oil and gas sector.";
+    const infoWindow2 = new google.maps.InfoWindow({
+      content: content2,
+      maxWidth: 200,
+      ariaLabel: "Rivers State"
+    }); 
+
+    const marker2 = new google.maps.Marker({
+      position: { lat: 4.854331009284311, lng: 6.997836783767172 },
+      map,
+      title: "Click for more",
+    });
+
+    marker2.addListener("click", () =>{
+      infoWindow2.open({
+        anchor:marker2,
+        map,
+      });
+    });
+
+//Fourth Marker:
+const content3 = 
+    "Kogi State, a rising star in oil production, holds a 2.74% share, contributing 55,000 barrels per day to Nigeria's total production. Kogi's potential for growth in the oil sector positions it as a promising player, with opportunities for further development and contributions to Nigeria's energy security.";
+    const infoWindow3 = new google.maps.InfoWindow({
+      content: content3,
+      maxWidth: 200,
+      ariaLabel: "Kogi State"
+    }); 
+
+    const marker3 = new google.maps.Marker({
+      position: { lat: 7.795655592048721, lng:6.730959344028443 },
+      map,
+      title: "Click for more",
+    });
+
+    marker3.addListener("click", () =>{
+      infoWindow3.open({
+        anchor:marker3,
+        map,
+      });
+    });
+//Fifth Marker:
+const content4 = 
+    "Lagos State, beyond its reputation as an economic powerhouse, ranks as one of Nigeria's highest oil producers. Holding a 2.64% share, Lagos contributes 40,000 barrels per day to the nation's total production. The state's dual role as an economic and oil-producing hub underscores its significance in supporting Nigeria's energy needs and economic development.";
+    const infoWindow4 = new google.maps.InfoWindow({
+      content: content4,
+      maxWidth: 200,
+      ariaLabel: "Kogi State"
+    }); 
+
+    const marker4 = new google.maps.Marker({
+      position: {lat: 6.525516283265804, lng: 3.3725217087710875},
+      map,
+      title: "Click for more",
+    });
+
+    marker4.addListener("click", () =>{
+      infoWindow4.open({
+        anchor:marker4,
+        map,
+      });
+    });
+//-----------------Markers and info window creation ends here---------------------------------------------------
+
+//Creating the properties for each state to fascilitate the circle production:
+    const oilStates = {
+  AkwaIbom: {
+    center: { lat: 5.041237307004679, lng: 7.919874406412119 },
+    barrel: 504000,
+  },
+  Delta: {
+    center: { lat: 5.567537217474196, lng: 5.765723880787949 },
+    barrel: 346000,
+  },
+  Rivers: {
+    center: { lat: 4.854331009284311, lng: 6.997836783767172 },
+    barrel: 344000,
+  },
+  Kogi: {
+    center: { lat: 7.795655592048721, lng:6.730959344028443 },
+    barrel: 55000,
+  },
+  Lagos: {
+  center: {lat: 6.525516283265804, lng: 3.3725217087710875},
+  barrel: 40000,
+  },
+};
+  // Construct the circle for each value in citymap.
+  // Note: We scale the area of the circle based on the barrel.
+  //Changed the colour, stroke weight, opacity, and the radius
+  for (const state in oilStates) {
+    // Add the circle for this city to the map.
+    const cityCircle = new google.maps.Circle({
+      strokeColor: "#00000",
+      strokeOpacity: 1,
+      strokeWeight: 1.5,
+      fillColor: "#FFC900",
+      fillOpacity: 0.40,
+      map,
+      center: oilStates[state].center,
+      radius: Math.sqrt(oilStates[state].barrel) * 150,
+    });
+  }
+
+
+}
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <h1>Prosperity Flow: Unveiling Nigeria's Oil Ecosystem.</h1>
+  <div id="text">
+    <p>Nigeria's economic journey has been intricately woven into its rich oil tapestry, where each state contributes uniquely to the nation's energy wealth. Akwa Ibom State shines as the beacon of prosperity, claiming the title of the leading crude oil producer, commanding an impressive 31.4% share and daily output of 504,000 barrels. In Delta State, a non-traditional hub has emerged, showcasing economic resilience with a formidable 21.56% share and a daily production of 346,000 barrels, underscoring its significant role in Nigeria's oil landscape. Rivers State, a stalwart in the oil and gas sector, closely follows with a 21.43% share, contributing 344,000 barrels per day, fortifying the nation's economic backbone. Bayelsa State, an emerging player, adds to the narrative, contributing substantially with an 18.07% share and daily production of 290,000 barrels. Lagos State, known for its economic prowess, not only stands as one of Nigeria's highest oil producers but also contributes to the nation's prosperity with a 2.64% share and daily output of 40,000 barrels. Kogi State, ascending as a rising star, showcases its potential with a 2.74% share, contributing 55,000 barrels per day to Nigeria's thriving oil sector. These success stories paint a vivid picture of Nigeria's diverse and dynamic oil-producing states, each playing a pivotal role in shaping the nation's economic landscape and fueling its energy narrative.</p>
+  </div>
+    
+  <!-- Map container -->
+    <div  id="map"></div>
+
+
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv3MGflguusDaLmV_-BUlmuoUI4EbM88w&callback=initMap&v=weekly"async></script>
+  </body>
+</html>
+
+
